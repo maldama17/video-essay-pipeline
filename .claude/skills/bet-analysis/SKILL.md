@@ -138,6 +138,14 @@ Decision:
 - **Estimate around break-even** → no real edge → **pass**.
 - **Below break-even** → **pass**, even if you like the team.
 
+**EV-wiggle sandbox.** For binary $1-settling contracts (Kalshi/Polymarket style), run the helper to see how EV moves across order type, fill price, your estimate range, and Kelly stake:
+
+```bash
+python3 bet-ev.py --label "Mexico to advance" --price 41 --est-low 44 --est-high 50 --limits 40 39 38 --bankroll 1000 --kelly 0.5
+```
+
+`--price` is the current market ask (the market-order fill); `--limits` are candidate resting limit prices. It prints break-even, EV at low/mid/high of your range, and the (fractional-)Kelly stake per scenario — making explicit that a **market order is the worst fill** and patience on a limit is itself an EV lever. If a screenshot of the market is provided, read the price off it and feed it in.
+
 ⚠️ **Flag — break-even is the hinge, not the market price.** A bet you "beat" slightly can still sit below break-even once spread/fee is included.
 
 ---
